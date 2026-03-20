@@ -1,0 +1,89 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="bg-secondary py-4 min-vh-100">
+
+    <div class="container bg-light p-5 mx-auto">
+
+        <h1 class="text-center mb-4">{{ card.name }}</h1>
+
+        <div class="row">
+
+            <div class="col-md-12">
+                <table class="table table-bordered">
+                    <tr>
+                        <th style="width:50%">Tipo</th>
+                        <td>{{ card.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Arquetipo</th>
+                        <td>{{ card.archetype }}</td>
+                    </tr>
+                    <tr>
+                        <th>Raza</th>
+                        <td>{{ card.race }}</td>
+                    </tr>
+                    {% if card.level %}
+                    <tr>
+                        <th>Nivel</th>
+                        <td>{{ card.level }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if card.attribute %}
+                    <tr>
+                        <th>Atributo</th>
+                        <td>{{ card.attribute }}</td>
+                    </tr>
+                    {% endif %}
+                    {% if card.atk is not None %}
+                    <tr>
+                        <th>ATK</th>
+                        <td>{{ card.atk }}</td>
+                    </tr>
+                    <tr>
+                        <th>DEF</th>
+                        <td>{{ card.def_points }}</td>
+                    </tr>
+                    {% endif %}
+                    <tr>
+                        <th>Precio TCGPlayer</th>
+                        <td>{{ card.price.tcgplayer_price }} dolares </td>
+                    </tr>
+                </table>
+
+                <h5 class="mt-3">Descripción</h5>
+                <p class="text-muted">{{ card.desc }}</p>
+
+                <h5 class="mt-3">Imagen de la carta</h5>
+                <div class="row g-2">
+                    {% for img in card.images.all %}
+                    <div class="col-12">
+                        <div class="card p-2 text-center">
+                            <img src="{{ img.image_url }}" style="width:100%; height:180px; object-fit:contain;"
+                                alt="{{ card.name }}">
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+
+                {% if card.sets.count %}
+                <h5 class="mt-3">Sets disponibles ({{ card.sets.count }})</h5>
+                <div style="max-height:200px; overflow-y:auto;" class="border rounded p-2">
+                    {% for s in card.sets.all %}
+                    <div class="d-flex justify-content-between border-bottom py-1">
+                        <span>{{ s.set_name }}</span>
+                        <span class="badge bg-primary">{{ s.set_rarity }}</span>
+                    </div>
+                    {% endfor %}
+                </div>
+                {% endif %}
+
+                <div class="text-center mt-4">
+                    <a href="{% url 'cards' %}" class="btn btn-primary">Volver a la lista</a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+</div>
+{% endblock %}
