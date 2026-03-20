@@ -10,24 +10,24 @@
 
             <div class="col-md-12">
                 <table class="table table-bordered">
-                    <tr>
-                        <th style="width:50%">Tipo</th>
-                        <td>{{ card.type }}</td>
-                    </tr>
-                    <tr>
-                        <th>Arquetipo</th>
-                        <td>{{ card.archetype }}</td>
-                    </tr>
-                    <tr>
-                        <th>Raza</th>
-                        <td>{{ card.race }}</td>
-                    </tr>
                     {% if card.level %}
                     <tr>
                         <th>Nivel</th>
                         <td>{{ card.level }}</td>
                     </tr>
                     {% endif %}
+                    <tr>
+                        <th style="width:50%">Tipo</th>
+                        <td>{{ card.type }}</td>
+                    </tr>
+                    <tr>
+                        <th>Raza</th>
+                        <td>{{ card.race }}</td>
+                    </tr>
+                    <tr>
+                        <th>Arquetipo</th>
+                        <td>{{ card.archetype }}</td>
+                    </tr>
                     {% if card.attribute %}
                     <tr>
                         <th>Atributo</th>
