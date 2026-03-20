@@ -11,7 +11,7 @@
             <div class="card-body d-flex flex-column justify-content-between text-center">
                 <h6 class="card-title">{{ card.name }}</h6>
                 <p>{{ card.type }}</p>
-                <p>{{ card.price.tcgplayer_price }} dolares</p>
+                <p>Precio en tcg: {{ card.price.tcgplayer_price }} dolares</p>
                 <a href="{% url 'card_details' card.card_id %}" class="btn btn-primary">Ver detalles</a>
             </div>
         </div>
