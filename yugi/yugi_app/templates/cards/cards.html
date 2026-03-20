@@ -20,21 +20,11 @@
 
     <nav class="mt-5">
         <ul class="pagination justify-content-center">
-            {% if cards.has_previous %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ cards.previous_page_number }}">Anterior</a>
-            </li>
-            {% endif %}
             {% for num in cards.paginator.page_range %}
             <li class="page-item {% if cards.number == num %}active{% endif %}">
                 <a class="page-link" href="?page={{ num }}">{{ num }}</a>
             </li>
             {% endfor %}
-            {% if cards.has_next %}
-            <li class="page-item">
-                <a class="page-link" href="?page={{ cards.next_page_number }}">Siguiente</a>
-            </li>
-            {% endif %}
         </ul>
     </nav>
     <p class="text-center text-muted">
